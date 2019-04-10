@@ -1,0 +1,2 @@
+# LaikaSat
+CanSat project
