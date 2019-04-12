@@ -85,8 +85,8 @@ void loop() {
 void transmitir(String s) {
   // Los datos se transmiten del siguiente formato:
   // "DATA (Temperatura) (Humedad) (Presion) (Altitud) (Coordenadas X) (Coordenadas Y) (Velocidad) FDATA" 
-  //Serial1.println(s); //APC220
-  Serial.println(s); //Terminal
+  Serial1.println(s); //APC220
+  //Serial.println(s); //Terminal
 }
 
 /**
