@@ -16,11 +16,12 @@
  * -SCK de la SD: SCK
  * -CS de la SD: digital 5
  * -SCL del BMP280: digital 3
- * -SCA del BMP280: digital2
+ * -SDA del BMP280: digital2
  * -PIN central de DHT11: digital 6
  * -RX del APC220: TX del arduino.
  * -TX del APC220: RX del arduino.
- * 
+ * -RX del GPS: digital 10
+ * -TX del GPS: digital 11
  * 
  **********************************************************
  */
@@ -36,7 +37,7 @@
 #define PIN_DHT  6 // Pin central del DHT11
 #define RETARDO 36 // Retardo entre cada iteracion (minimo 36)
 #define NIVEL_DEL_MAR_PR 101325 // Presion al nivel del mar
-#define LOG_FILE "log.txt" // Nombre del archivo en la SD
+#define LOG_FILE "logazo.txt" // Nombre del archivo en la SD
 
 /* Paquete de datos */
 typedef struct {
@@ -84,8 +85,8 @@ void loop() {
 void transmitir(String s) {
   // Los datos se transmiten del siguiente formato:
   // "DATA (Temperatura) (Humedad) (Presion) (Altitud) (Coordenadas X) (Coordenadas Y) (Velocidad) FDATA" 
-  Serial1.println(s); //APC220
-  //Serial.println(s); //Terminal
+  //Serial1.println(s); //APC220
+  Serial.println(s); //Terminal
 }
 
 /**
@@ -94,7 +95,7 @@ void transmitir(String s) {
 void leerDHT(Data* datos) {
   dht11.read11(PIN_DHT); // Leemos el sensor.
   if (dht11.temperature != -999 && dht11.humidity != -999) {  // Si los datos obtenidos son correctos, mete los valores leidos por el DHT a los datos
-    datos->temp = dht11.temperature + 273;
+    datos->temp = dht11.temperature - 7 + 273; // -7 por ajuste (el sensor no es muy preciso) y + 273 para pasar a kelvin
     datos->hum = dht11.humidity;
   }
 }
