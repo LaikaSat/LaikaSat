@@ -2,7 +2,7 @@
 # ~~ LaikaSAT ~~
 
 # uso:
-#     [terminal]$ Rscript rgrafs.r
+#     [terminal]$ Rscript grafs.r
 #
 # necesita la libreria "serial" para leer el puerto. para instalar,
 # hacer install.packages desde una sesion interactiva de R:
