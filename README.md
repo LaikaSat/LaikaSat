@@ -1,6 +1,6 @@
 # LaikaSat
+==========
 CanSat project / Proyecto CanSat / CanSat proiektua
-===============
 
 ### Programa Arduino Micro
 Librerías:
