@@ -1,4 +1,4 @@
-LaikaSat
+:rocket: LaikaSat :rocket:
 ========
 CanSat project / Proyecto CanSat / CanSat proiektua
 
